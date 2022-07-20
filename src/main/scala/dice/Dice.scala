@@ -11,10 +11,10 @@ enum Dice(val faces: Vector[Face]):
   case GiganticDice extends Dice(Vector(Kill, Disrupt, Disrupt, Push, Trample, Trample))
   case DoomDice extends Dice(Vector(Disrupt, Death, Death, Rally, Rally, DelayedRally))
 
-  def roll(): Face =
-    Random.shuffle(faces).head
+  def roll(): Face = Random.shuffle(faces).head
 
   def rollN(n: Int): Roll =
-    if n > 0
-    then rollN(n - 1).add(roll())
-    else new Roll()
+    if n > 0 then
+      rollN(n - 1).add(roll())
+    else
+      new Roll()
