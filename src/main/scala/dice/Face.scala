@@ -3,7 +3,7 @@ package dice
 import dice.Face.Kill
 
 /** the faces of a die */
-enum Face(val id: Int) extends Ordered[Face]:
+enum Face(val id: Int) extends Ordered[Face] :
   override def compare(that: Face): Int = this.id - that.id
 
   case Kill extends Face(0)
@@ -13,5 +13,5 @@ enum Face(val id: Int) extends Ordered[Face]:
   case Blank extends Face(4)
   case Trample extends Face(5)
   case Death extends Face(6)
-  case  Rally extends Face(7)
+  case Rally extends Face(7)
   case DelayedRally extends Face(8)

@@ -15,9 +15,11 @@ extension (s: String) def parseJoA(): (DiceSet, DiceSet, Boolean) =
     else
       word.last.parseDice() match
         case Some(dice) =>
-          if !isDefense
-          then attack.add(dice, word.init.parseInt())
-          else defence.add(dice, word.init.parseInt())
+          val count = word.init.parseInt()
+          if !isDefense then
+            attack.add(dice, count)
+          else
+            defence.add(dice, count)
         case None =>
 
   (attack, defence, isDefense)
