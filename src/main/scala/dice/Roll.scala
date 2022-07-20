@@ -3,7 +3,7 @@ package dice
 import scala.collection.mutable
 
 /** the result of dice rolls */
-class Roll(val faces: mutable.Map[Face, Int] = mutable.Map[Face, Int]()):
+class Roll(val faces: mutable.Map[Face, Int] = mutable.SortedMap[Face, Int]()):
 
   def add(face: Face, count: Int = 1): Roll =
     faces(face) = faces.getOrElse(face, 0) + count

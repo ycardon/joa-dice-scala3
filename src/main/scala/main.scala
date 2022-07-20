@@ -1,44 +1,40 @@
 import dice._
 import parser._
 
-/** resolve an attack vs. defense */
+/** resolve an attack : apply defense shields on the attack then remove irrelevant faces from the attack */
 def resolveAttack(attack: Roll, defense: Roll): Roll =
   val result = attack.clone
-
-  // apply defense shields on the attack
   var shieldCount = defense.faces.getOrElse(Face.Shield, 0)
-  shieldCount = result.cancel(Face.Kill, shieldCount)
-  shieldCount = result.cancel(Face.Disrupt, shieldCount)
-  shieldCount = result.cancel(Face.Push, shieldCount)
-  
-  // remove unrelevant faces from the attack
-  attack.faces.remove(Face.Shield)
-  attack.faces.remove(Face.Blank)
-
+  for face <- List(Face.Kill, Face.Disrupt, Face.Push) do
+    shieldCount = result.cancel(face, shieldCount)
+  for face <- Vector(Face.Shield, Face.Blank) do
+    result.faces.remove(face)
   result
 
 /** cancel Roll face by an amount of shield, return remaining amount */
 extension (roll: Roll) def cancel(face: Face, shieldCount: Int): Int =
-  3
-
+  roll.faces.get(face) match
+    case Some(faceCount) =>
+      if faceCount > shieldCount then
+        roll.faces(face) = faceCount - shieldCount
+        0
+      else
+        roll.faces.remove(face)
+        shieldCount - faceCount
+    case None =>
+      shieldCount
 
 @main
-def main(): Unit = {
-  val s = "2B W - 3R"
-  println(s)
+def main(): Unit =
+  val input = "20B 10R - 30W"
 
-  val (attackDiceSet, defenceDiceSet, isDefence) = s.parseJoA()
-  val attack = attackDiceSet.roll()
-  val attackClone = attack.clone
-  attack.add(attack)
-  println("attack x2: %s".format(attack))
-  println("attack   : %s".format(attackClone))
-
-
-  println(Face.Kill)
-  println(Dice.RedDice.rollN(4))
-  println(Dice.RedDice)
-  println(attackDiceSet)
-
-
-}
+  val (attackSet, defenceSet, isDefence) = input.parseJoA()
+  val attack = attackSet.roll()
+  if !isDefence then
+    println("attack : %s".format(attack))
+  else
+    val defence = defenceSet.roll()
+    val result = resolveAttack(attack, defence)
+    println("attack  : %s".format(attack))
+    println("defence : %s".format(defence))
+    println("result  : %s".format(result))
