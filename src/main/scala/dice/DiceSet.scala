@@ -12,3 +12,6 @@ class DiceSet(val set: mutable.Map[Dice, Int] = mutable.Map[Dice, Int]()):
     val roll = new Roll()
     for (dice, count) <- set do roll.add(dice.rollN(count))
     roll
+
+  override def toString: String =
+    set.toStringHelper
