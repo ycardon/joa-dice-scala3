@@ -2,9 +2,12 @@
 
 Rewrite of the TypeScript project [JoA Dice](https://github.com/ycardon/joa-dices) in Scala 3
 
+- uses [ScalaNative](https://scala-native.readthedocs.io) to produce a JVM-free executable
+
 Test the elm webapp version [here](https://ycardon.github.io)
 
 This is the 8th edition of my [language exploration project](https://github.com/topics/joa-dices-rewrite)
+
 - [Typescript](https://github.com/ycardon/joa-dices) (original)
 - [Rescript](https://github.com/ycardon/joa-dices-rescript)
 - [Haskell](https://github.com/ycardon/joa-dices-haskell)
