@@ -10,7 +10,7 @@ class DiceSet(val set: mutable.Map[Dice, Int] = mutable.Map[Dice, Int]()):
     this
 
   def roll(): Roll =
-    val roll = new Roll()
+    val roll = Roll()
     for (dice, count) <- set do roll.add(dice.rollN(count))
     roll
 
