@@ -14,4 +14,7 @@ class DiceSet extends mutable.HashMap[Dice, Int] :
     for (dice, count) <- this do roll.add(dice.rollN(count))
     roll
 
+  // functional (not that cool) version
+  // this.foldLeft(Roll())((r, keyValue) => r.add(keyValue._1.rollN(keyValue._2)))
+
   override def toString: String = this.toStringHelper
