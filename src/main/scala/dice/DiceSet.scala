@@ -3,15 +3,15 @@ package dice
 import collection.mutable
 
 /** a set of dice to be rolled */
-class DiceSet(val set: mutable.Map[Dice, Int] = mutable.Map[Dice, Int]()):
+class DiceSet extends mutable.HashMap[Dice, Int] :
 
   def add(dice: Dice, count: Int): DiceSet =
-    set(dice) = set.getOrElse(dice, 0) + count
+    this.put(dice, this.getOrElse(dice, 0) + count)
     this
 
   def roll(): Roll =
     val roll = Roll()
-    for (dice, count) <- set do roll.add(dice.rollN(count))
+    for (dice, count) <- this do roll.add(dice.rollN(count))
     roll
 
-  override def toString: String = set.toStringHelper
+  override def toString: String = this.toStringHelper

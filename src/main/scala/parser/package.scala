@@ -5,8 +5,8 @@ import dice.Dice._
 
 /** parse a string in the form of "2R B - 3W" */
 extension (s: String) def parseJoA(): (DiceSet, DiceSet, Boolean) =
-  val attack = new DiceSet()
-  val defence = new DiceSet()
+  val attack = DiceSet()
+  val defence = DiceSet()
   var isDefense = false
 
   if s != "" then
