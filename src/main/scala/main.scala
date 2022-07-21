@@ -1,14 +1,17 @@
 import dice._
+import dice.Face._
 import parser._
 
 /** resolve an attack : apply defense shields on the attack then remove irrelevant faces from the attack */
 def resolveAttack(attack: Roll, defense: Roll): Roll =
   val result = attack.clone
-  var shieldCount = defense.faces.getOrElse(Face.Shield, 0)
-  for face <- List(Face.Kill, Face.Disrupt, Face.Push) do
+  var shieldCount = defense.faces.getOrElse(Shield, 0)
+  
+  for face <- Seq(Kill, Disrupt, Push) do
     shieldCount = result.cancel(face, shieldCount)
-  for face <- Vector(Face.Shield, Face.Blank) do
+  for face <- Seq(Shield, Blank) do
     result.faces.remove(face)
+
   result
 
 /** cancel Roll face by an amount of shield, return remaining amount */
