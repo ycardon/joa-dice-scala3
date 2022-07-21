@@ -29,13 +29,13 @@ def joa(input: String): Unit =
   val (attackSet, defenceSet, isDefence) = input.parseJoA()
   val attack = attackSet.roll()
   if !isDefence then
-    println("attack : %s".format(attack))
+    println(s"attack : $attack")
   else
     val defence = defenceSet.roll()
     val result = resolveAttack(attack, defence)
-    println("attack  : %s".format(attack))
-    println("defence : %s".format(defence))
-    println("result  : %s".format(result))
+    println(s"attack  : $attack")
+    println(s"defence : $defence")
+    println(s"result  : $result")
 
 /** default entrypoint */
 //@main
