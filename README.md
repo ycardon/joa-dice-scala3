@@ -1,6 +1,6 @@
 # joa-dice-scala3
 
-Rewrite of the TypeScript project [JoA Dice](https://github.com/ycardon/joa-dices) in Go
+Rewrite of the TypeScript project [JoA Dice](https://github.com/ycardon/joa-dices) in Scala 3
 
 Test the elm webapp version [here](https://ycardon.github.io)
 
