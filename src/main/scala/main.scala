@@ -24,10 +24,8 @@ extension (roll: Roll) def cancel(face: Face, shieldCount: Int): Int =
     case None =>
       shieldCount
 
-@main
-def main(): Unit =
-  val input = "20B 10R - 30W"
-
+/** parse a string and resolve the dice rolls */
+def joa(input: String): Unit =
   val (attackSet, defenceSet, isDefence) = input.parseJoA()
   val attack = attackSet.roll()
   if !isDefence then
@@ -38,3 +36,11 @@ def main(): Unit =
     println("attack  : %s".format(attack))
     println("defence : %s".format(defence))
     println("result  : %s".format(result))
+
+/** default entrypoint */
+//@main
+//def main(): Unit = joa("20R 10B - 30W")
+
+/** entrypoint for ScalaNative */
+def main(args: Array[String]): Unit = joa(args.mkString(" "))
+
