@@ -9,6 +9,7 @@ def resolveAttack(attack: Roll, defense: Roll): Roll =
 
   for face <- Seq(Kill, Disrupt, Push) do
     shieldCount = result.cancel(face, shieldCount)
+
   for face <- Seq(Shield, Blank) do
     result.remove(face)
 
@@ -31,8 +32,10 @@ extension (roll: Roll) def cancel(face: Face, shieldCount: Int): Int =
 def joa(input: String): Unit =
   val (attackSet, defenceSet, isDefence) = input.parseJoA()
   val attack = attackSet.roll()
+
   if !isDefence then
     println(s"attack : $attack")
+
   else
     val defence = defenceSet.roll()
     val result = resolveAttack(attack, defence)
