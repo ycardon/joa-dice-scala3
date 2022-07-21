@@ -9,18 +9,19 @@ extension (s: String) def parseJoA(): (DiceSet, DiceSet, Boolean) =
   val defence = new DiceSet()
   var isDefense = false
 
-  for word <- s.split(' ') do
-    if "-/".contains(word) then
-      isDefense = true
-    else
-      word.last.parseDice() match
-        case Some(dice) =>
-          val count = word.init.parseInt()
-          if !isDefense then
-            attack.add(dice, count)
-          else
-            defence.add(dice, count)
-        case None =>
+  if s != "" then
+    for word <- s.split(' ') do
+      if "-/".contains(word) then
+        isDefense = true
+      else
+        word.last.parseDice() match
+          case Some(dice) =>
+            val count = word.init.parseInt()
+            if !isDefense then
+              attack.add(dice, count)
+            else
+              defence.add(dice, count)
+          case None =>
 
   (attack, defence, isDefense)
 

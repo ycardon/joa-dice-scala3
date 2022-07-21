@@ -11,4 +11,4 @@ extension[K] (map: mutable.Map[K, Int]) def toStringHelper: String =
 
   if builder.length > separator.length then
     builder.substring(separator.length)
-  else ""
+  else "<nothing>"
