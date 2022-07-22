@@ -38,9 +38,5 @@ def joa(input: String): Unit =
     println(s"defence : $defence")
     println(s"result  : $result")
 
-/** JVM entrypoint */
-//@main
-//def main(): Unit = joa("20R 10B - 30W")
-
-/** entrypoint for ScalaNative */
+/** main entrypoint */
 def main(args: Array[String]): Unit = joa(args.mkString(" "))

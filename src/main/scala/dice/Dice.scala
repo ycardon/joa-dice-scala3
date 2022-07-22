@@ -16,4 +16,4 @@ enum Dice(val faces: Seq[Face]):
   def rollN(n: Int): Roll =
     if n > 0
     then rollN(n - 1).add(roll())
-    else new Roll()
+    else Roll()
