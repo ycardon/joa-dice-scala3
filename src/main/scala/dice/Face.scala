@@ -1,7 +1,5 @@
 package dice
 
-import dice.Face.Kill
-
 /** the faces of a die */
 enum Face(val id: Int) extends Ordered[Face]:
   override def compare(that: Face): Int = this.id - that.id

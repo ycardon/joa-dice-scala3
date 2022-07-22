@@ -1,6 +1,6 @@
 package parser
 
-import dice.*
+import dice.{Dice, DiceSet}
 import dice.Dice.*
 
 extension (s: String)
