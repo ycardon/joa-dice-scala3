@@ -3,7 +3,7 @@ package dice
 import collection.mutable
 
 /** a set of dice to be rolled */
-class DiceSet extends mutable.HashMap[Dice, Int] :
+class DiceSet extends mutable.HashMap[Dice, Int]:
 
   def add(dice: Dice, count: Int): DiceSet =
     this.put(dice, this.getOrElse(dice, 0) + count)

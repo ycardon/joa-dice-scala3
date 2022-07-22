@@ -3,7 +3,7 @@ package dice
 import scala.collection.mutable
 
 /** the result of dice rolls */
-class Roll extends mutable.HashMap[Face, Int] :
+class Roll extends mutable.HashMap[Face, Int]:
 
   def add(face: Face, count: Int = 1): Roll =
     this.put(face, this.getOrElse(face, 0) + count)
